@@ -1,10 +1,10 @@
 class ExercisesController < ApplicationController
-  before_action :set_regmient
-  before_action :set_regmient_exercise, only: [:show, :update, :destroy]
+  before_action :set_regiment
+  before_action :set_regiment_exercise, only: [:show, :update, :destroy]
 
   # GET /todos/:todo_id/items
   def index
-    json_response(@regmient.items)
+    json_response(@regiment.items)
   end
 
   # GET /todos/:todo_id/items/:id
@@ -14,8 +14,7 @@ class ExercisesController < ApplicationController
 
   # POST /todos/:todo_id/items
   def create
-    @regiment.items.create!(exercise_params)
-    # json_response(@todo, :created)
+    @regiment.exercises.create!(exercise_params)
     json_response(status: "SUCCESS", message: 'item created successfully.', data: @exercise.name)
 
   end
@@ -39,7 +38,7 @@ class ExercisesController < ApplicationController
   end
 
   def set_regiment
-    @regiment = Regiment.find(params[:regiment_id])
+    @regiment = Regiment.find(params[:regiments_id])
   end
 
   def set_regiment_exercise
