@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { registerUser, loginUser, verifyUser } from './services/api_helper'
-import { Route, Link, withRouter } from 'react-router-dom'
+import { Route, Link } from 'react-router-dom'
 
 import RegisterForm from './components/RegisterForm'
 import LoginForm from './components/LoginForm'
-import Regiment from './components/Regiments'
+import Regiment from './components/Regiment'
 class App extends Component {
   constructor(props) {
     super(props)
@@ -81,7 +81,7 @@ class App extends Component {
           />
         )} />
         <Route path="/regiments" render={() => (
-          // <Regiment />
+          <Regiment />
         )} />
       </div>
     );

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class Regiment extends Component {
+export default class Regiment extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -15,3 +15,4 @@ class Regiment extends Component {
     )
   }
 }
+
