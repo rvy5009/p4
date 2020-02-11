@@ -6,10 +6,15 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+User1 = User.create(name:"ray", email:"123", password: "1234")
+
+
+
 
 regiment1 = Regiment.create(title:"abs", info:"do more")
 regiment2 = Regiment.create(title:"running", info:"run more")
-
+User1.regiments.push(regiment1)
+User1.regiments.push(regiment2)
 exercise1 = Exercise.create(name: "situps", instructions:"up and down")
 regiment1.exercises.push(exercise1)
 exercise2 = Exercise.create(name: "planks", instructions:"hold position for a short time")
