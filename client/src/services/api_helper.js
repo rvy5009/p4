@@ -4,9 +4,7 @@ const api = axios.create({
   baseURL: "http://localhost:3000"
 })
 
-// AUTH
 
-// LOGIN
 export const loginUser = async (loginData) => {
   const resp = await api.post('/auth/login', loginData);
   console.log(resp);
@@ -17,7 +15,6 @@ export const loginUser = async (loginData) => {
   return resp.data.user;
 }
 
-// REGISTER
 export const registerUser = async (registerData) => {
   try {
     const resp = await api.post('/signup', registerData);
@@ -34,7 +31,6 @@ export const registerUser = async (registerData) => {
   }
 }
 
-// VERIFY USER
 export const verifyUser = () => {
   const token = localStorage.getItem('authToken');
   if (token) {
@@ -42,22 +38,18 @@ export const verifyUser = () => {
   }
 }
 
-// TODOS
-// GET ALL TODOS
 export const indexTodos = async () => {
-  const resp = await api.get('/todos');
+  const resp = await api.get('/registers');
   return resp.data;
 }
 
-//POST THE TODO
 export const postTodo = async (postData) => {
-  const resp = await api.post('/todos', postData);
+  const resp = await api.post('/registers', postData);
   return resp.data;
 }
 
-// UPDATE TODO
 export const putTodo = async (id, postData) => {
-  const resp = await api.put(`/todos/${id}`, postData);
+  const resp = await api.put(`/registers/${id}`, postData);
   const todo = {id: id, title: resp.data.data}
   return todo;
 }
