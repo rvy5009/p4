@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 export default class RegisterForm extends Component {
   constructor(props) {
@@ -12,8 +12,7 @@ export default class RegisterForm extends Component {
   }
 
   handleChange = (e) => {
-    const { name, value } = e.target;
-    // Same as const name = e.target.name // const value = e.target.value
+    const { name, value } = e.target
     this.setState({
       [name]: value
     })
