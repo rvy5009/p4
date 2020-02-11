@@ -1,4 +1,4 @@
-class ItemsController < ApplicationController
+class ExercisesController < ApplicationController
   before_action :set_regmient
   before_action :set_regmient_exercise, only: [:show, :update, :destroy]
 
@@ -43,6 +43,6 @@ class ItemsController < ApplicationController
   end
 
   def set_regiment_exercise
-    @regiment = @regiment.exercises.find_by!(id: params[:id]) if @regiment
+    @exercise = @regiment.exercises.find_by!(id: params[:id]) if @regiment
   end
 end
