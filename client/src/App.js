@@ -4,7 +4,7 @@ import { Route, Link, withRouter } from 'react-router-dom'
 
 import RegisterForm from './components/RegisterForm'
 import LoginForm from './components/LoginForm'
-
+import Regiment from './components/Regiments'
 class App extends Component {
   constructor(props) {
     super(props)
