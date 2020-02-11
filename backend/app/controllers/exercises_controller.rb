@@ -38,7 +38,7 @@ class ExercisesController < ApplicationController
   end
 
   def set_regiment
-    @regiment = Regiment.find(params[:regiments_id])
+    @regiment = Regiment.find(params[:regiment_id])
   end
 
   def set_regiment_exercise
