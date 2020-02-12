@@ -93,7 +93,7 @@ class App extends Component {
         )} />
         <Route exact path="/createRegiment" render={() => <CreateRegiment />} />
         <Route exact path="/updateRegiment/:id" component={UpdateRegiment} />
-        <Route exact path="/addExercise" render={() => <AddExercise />} />
+        <Route exact path="/regiments/:id" render={() => <AddExercise />} />
         <Route exact path="/regiments/:id/exercises" component={showExercises} />
       </div>
     );
