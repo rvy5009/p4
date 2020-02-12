@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { allRegiments } from "../services/api_helper";
+import { allRegiments, verifyUser } from "../services/api_helper";
 
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 export default class Regiment extends Component {
   constructor(props) {
@@ -10,25 +10,27 @@ export default class Regiment extends Component {
       regiments: []
     }
   }
-  
-  componentDidMount = async () => {
-    // try {
-      const results = await allRegiments();
-      console.log(results);
-      this.setState({
-        regiments: results,
-      });
-    // } catch (e) {
-    //   console.log(e);
-    // }
+
+  async componentDidMount() {
+    verifyUser();
+    try {
+    const results = await allRegiments();
+    
+    this.setState({
+      regiments: results,
+    });
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   render() {
-    console.log(this.state.results);
 
     return (
       <div>
-        hello
+        {this.state.regiments.map((regiment, key) => (
+        <div key={key}> {regiment.title}</div>))}
+       
       </div>
     )
   }
