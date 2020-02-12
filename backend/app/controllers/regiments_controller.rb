@@ -2,7 +2,7 @@ class RegimentsController < ApplicationController
   before_action :set_regiment, only: [:show, :update, :destroy]
 
   def index
-    @regiments = current_user.regiments
+    @regiments = Regiment.all
     json_response(@regiments)
   end
 
