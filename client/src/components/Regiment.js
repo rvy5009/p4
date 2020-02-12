@@ -42,7 +42,7 @@ class Regiment extends Component {
       <div>
         {this.state.regiments.map((regiment, key) => (
         <div key={key}> {regiment.title}
-          <Link to={`/exercises/${regiment.id}`}>
+          <Link to={`/regiments/${regiment.id}/exercises`} id={regiment.id} >
             <button>Exercises</button>
           </Link>
           <button onClick={e => {this.delete(e, regiment.id)}}>
