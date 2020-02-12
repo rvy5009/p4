@@ -22,7 +22,7 @@ class RegimentsController < ApplicationController
 
   def destroy
     @regiment.destroy
-    json_response(status: 'SUCCESS', message: 'deleted the todo', data: @regiments.title)
+    json_response(status: 'SUCCESS', message: 'deleted the todo')
 
   end
 
