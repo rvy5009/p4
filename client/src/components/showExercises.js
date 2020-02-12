@@ -41,7 +41,9 @@ class Regiment extends Component {
   render() {
     return (
       <div>
-        
+        <Link to={`/regiments/${this.props.match.params.id}`} >
+          <button>Add Exercise</button>
+        </Link>
         {this.state.exercises.map((exercise, key) => (
         <div key={key}> {exercise.name}
 
