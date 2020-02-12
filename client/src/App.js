@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
 import { registerUser, loginUser, verifyUser } from './services/api_helper'
-import { Route, Link } from 'react-router-dom'
+import { Route, Link, withRouter } from 'react-router-dom'
 
+import CreateRegiment from './components/createRegiment'
 import RegisterForm from './components/RegisterForm'
 import LoginForm from './components/LoginForm'
 import Regiment from './components/Regiment'
+import UpdateRegiment from './components/updateRegiment'
+
 class App extends Component {
   constructor(props) {
     super(props)
@@ -21,7 +24,7 @@ class App extends Component {
     e.preventDefault()
     const currentUser = await registerUser(registerData)
       this.setState({ currentUser })
-      // this.props.history.push('/regmient')
+      this.props.history.push('/regmients')
 
   }
 
@@ -29,7 +32,7 @@ class App extends Component {
     e.preventDefault()
     const currentUser = await loginUser(loginData)
     this.setState({ currentUser })
-    // this.props.history.push("/")
+    this.props.history.push("/regiments")
   }
 
   handleLogout = () => {
@@ -42,6 +45,7 @@ class App extends Component {
   }
 
   componentDidMount() {
+    
     verifyUser();
     if (localStorage.getItem('authToken')) {
       const name = localStorage.getItem('name')
@@ -53,7 +57,7 @@ class App extends Component {
     }
   }
   render() {
-    console.log(this.state.currentUser)
+    
     return (
       <div className="App">
         {this.state.currentUser ?
@@ -64,7 +68,10 @@ class App extends Component {
           :
         <nav>
           <Link to="/register"><button>Register</button></Link>
-          <Link to="/login"><button>Login</button></Link>
+            <Link to="/login"><button>Login</button></Link>
+            <Link to="/createRegiment">
+            Create regiment
+            </Link>
         </nav>
         }
         <Route path="/login" render={() => (
@@ -72,6 +79,7 @@ class App extends Component {
             handleLogin={this.handleLogin}
           />
         )} />
+
         <Route path="/register" render={() => (
           <RegisterForm
             handleRegister={this.handleRegister}
@@ -81,9 +89,11 @@ class App extends Component {
         <Route path="/regiments" render={() => (
           <Regiment />
         )} />
+        <Route exact path="/createRegiment" render={() => <CreateRegiment />} />
+        <Route exact path="/updateRegiment/:id" component={UpdateRegiment} />
       </div>
     );
   }
 }
 
-export default App;
+export default withRouter(App);
