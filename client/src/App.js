@@ -17,22 +17,19 @@ class App extends Component {
       
     }
   }
-
   handleRegister = async (e, registerData) => {
     e.preventDefault()
     const currentUser = await registerUser(registerData)
-    if (!currentUser.errorMessage) {
       this.setState({ currentUser })
-      this.props.histroy.push('/regiments')
-    } else {
-      this.setState({errorText: currentUser.errorMessage})
-    }
+      // this.props.history.push('/regmient')
+
   }
+
   handleLogin = async (e, loginData) => {
     e.preventDefault()
     const currentUser = await loginUser(loginData)
     this.setState({ currentUser })
-    this.props.histroy.push("/regiments")
+    // this.props.history.push("/")
   }
 
   handleLogout = () => {
@@ -56,6 +53,7 @@ class App extends Component {
     }
   }
   render() {
+    console.log(this.state.currentUser)
     return (
       <div className="App">
         {this.state.currentUser ?
