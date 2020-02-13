@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { updateExerciseApi, oneExercise } from "../services/api_helper";
-import { withRouter } from "react-router-dom";
+import { withRouter,Link } from "react-router-dom";
+
 
 class UpdateExercise extends Component {
   constructor(props) {
@@ -16,8 +17,6 @@ class UpdateExercise extends Component {
 
   async componentDidMount() {
     const id = this.props.match.params.id;
-    // console.log(id)
-    // console.log(this.props.regId)
     try {
       const resp = await oneExercise(this.props.regId,id);
       console.log(resp)
@@ -42,7 +41,9 @@ class UpdateExercise extends Component {
     return (
       <div>
         <div>
-          
+        <Link to={`/regiments/`} >
+            Regmients
+          </Link>
           <form
             onSubmit={e => {
             e.preventDefault();
