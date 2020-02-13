@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { allExercises, verifyUser } from "../services/api_helper";
+import { allExercises, verifyUser, deleteExercise } from "../services/api_helper";
 
 import { Link, withRouter } from "react-router-dom";
 class Exercise extends Component {
@@ -24,21 +24,23 @@ class Exercise extends Component {
     }
   }
 
-  // delete = async (e, exerciseId) => {
-  //   e.preventDefault()
-  //   try {
-  //     await deleteRegiment(exerciseId)
-  //     const exercises = this.state.exercises.filter(exercise => exercise.id !== exerciseId)
-  //     this.setState({
-  //       exercises
-  //     })
-  //   } catch (e) {
-  //     console.log(e)
-  //   }
-  // }
+  delete = async (e, exerciseId) => {
+    e.preventDefault()
+    const id = this.props.match.params.id;
+    console.log(id)
+    console.log(this.props.regId)    
+    try {
+      await deleteExercise(this.props.regId,id)
+      const exercises = this.state.exercises.filter(exercise => exercise.id !== exerciseId)
+      this.setState({
+        exercises
+      })
+    } catch (e) {
+      console.log(e)
+    }
+  }
 
   render() {
-    console.log(this.state.exercises)
     return (
       <div>
 
@@ -47,10 +49,9 @@ class Exercise extends Component {
         </Link>
         {this.state.exercises.map((exercise, key) => (
           <div key={key}> {exercise.name}
-\
-            {/* <button onClick={e => {this.delete(e, exercise.id)}}>
+            <button onClick={e => {this.delete(e, exercise.id)}}>
             Delete
-          </button> */}
+          </button>
             <Link to={`/regiments/3/exercises/${exercise.id}`} id={exercise.id}>
               <button>Update</button>
             </Link>
