@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { updateExerciseApi, allExercises } from "../services/api_helper";
+import { updateExerciseApi, oneExercise } from "../services/api_helper";
 import { withRouter } from "react-router-dom";
 
 class UpdateExercise extends Component {
@@ -10,23 +10,22 @@ class UpdateExercise extends Component {
         done: "",
         image: "",
         instructions: "",
-        id: ""
+      
     };
   }
 
   async componentDidMount() {
     const id = this.props.match.params.id;
-    console.log(id)
+    // console.log(id)
+    // console.log(this.props.regId)
     try {
-      const resp = await allExercises(this.props.exercise.id);
+      const resp = await oneExercise(this.props.regId,id);
       console.log(resp)
       this.setState({
-        
         name: resp.name,
         image: resp.image,
         done: resp.done,
-        instructions: resp.instructions,
-        id: id
+        instructions: resp.instructions
       });
     } catch (e) {
       console.log(e);
@@ -40,7 +39,6 @@ class UpdateExercise extends Component {
     });
   }
   render() {
-    // console.log(this.state.id)
     return (
       <div>
         <div>
@@ -48,15 +46,15 @@ class UpdateExercise extends Component {
           <form
             onSubmit={e => {
             e.preventDefault();
-            updateExerciseApi(this.props.exercise.id, this.state,1);
+            updateExerciseApi(this.props.regId, this.state,this.props.match.params.id);
             this.props.history.push("/regiments")
           }}
           >
           <label htmlFor="name">name</label>
           <input
             type="text"
-            name="title"
-            value={this.state.title}
+            name="name"
+            value={this.state.name}
             onChange={this.handleChange}
           />
           <br />
