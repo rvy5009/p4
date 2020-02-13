@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { allRegiments, verifyUser,deleteRegiment } from "../services/api_helper";
 
 import { Link, withRouter,Route } from "react-router-dom";
-import updateExercise from './updateExercise'
+import UpdateExercise from './updateExercise'
 
 
 class Regiment extends Component {
@@ -40,15 +40,16 @@ class Regiment extends Component {
   }
 
   render() {
+    // console.log(this.state.regiments)
     return (
       <div>
         {this.state.regiments.map((regiment, key) => (
           <div key={key}> {regiment.title}
+
             <Route path={`/regiments/${regiment.id}/exercises/:id`}
-              component={updateExercise}
-              id = {"a"}
+              render={() => <UpdateExercise regId={regiment.id}/>}
             />
-          <Link to={`/regiments/${regiment.id}/exercises`} id={regiment.id} >
+          <Link to={`/regiments/${regiment.id}/exercises`} >
             <button>Exercises</button>
           </Link>
           <button onClick={e => {this.delete(e, regiment.id)}}>
