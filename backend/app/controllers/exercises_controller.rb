@@ -33,7 +33,7 @@ class ExercisesController < ApplicationController
   private
 
   def exercise_params
-    params.permit(:name)
+    params.permit(:name, :done, :image, :instructions, :id)
   end
 
   def set_regiment
