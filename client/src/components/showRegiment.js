@@ -42,20 +42,22 @@ class Regiment extends Component {
   render() {
     // console.log(this.state.regiments)
     return (
-      <div>
+      <div className="regiments">
         {this.state.regiments.map((regiment, key) => (
-          <div key={key}> {regiment.title}
-
-            <Route path={`/regiments/${regiment.id}/exercises/:id`}
-              render={() => <UpdateExercise regId={regiment.id}/>}
-            />
+          
+        <div className="regiments" key={key}>
+          
+            {regiment.title}
+          <Route path={`/regiments/${regiment.id}/exercises/:id`}
+            render={() => <UpdateExercise regId={regiment.id}/>}
+          />
           <Link to={`/regiments/${regiment.id}/exercises`} >
-            <button>Exercises</button>
+            Exercises
           </Link>
           <button onClick={e => {this.deleteReg(e, regiment.id)}}>
             Delete
           </button>
-          <Link to={`/regiments/${regiment.id}`} id={regiment.id}>
+          <Link to={`/updateRegiment/${regiment.id}`} id={regiment.id}>
             <button>Update</button>
           </Link>
         </div>))}

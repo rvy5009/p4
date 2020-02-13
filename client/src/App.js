@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Route ,withRouter } from 'react-router-dom'
 import { registerUser, loginUser, verifyUser } from './services/api_helper'
+import './App.css';
 
 import CreateRegiment from './components/addRegiment'
 import RegisterForm from './components/registerForm'
@@ -10,6 +11,7 @@ import UpdateRegiment from './components/updateRegiment'
 import AddExercise from './components/addExercise'
 import Exercise from './components/showExercises'
 import Header from './components/header'
+
 
 
 class App extends Component {
@@ -80,13 +82,13 @@ class App extends Component {
             errorText={this.state.errorText}
           />
         )} />
-        <Route path="/regiments" render={() => (
+        <Route exact path="/regiments" render={() => (
           <Regiment />
         )} />
         <Route exact path="/createRegiment" render={() => <CreateRegiment />} />
         <Route exact path="/updateRegiment/:id" component={UpdateRegiment} />
         <Route exact path="/regiments/:id" render={() => <AddExercise />} />
-        <Route path={`/regiments/:id/exercises`}
+        <Route eaxct path={`/regiments/:id/exercises`}
               render={() => <Exercise />}
             />
 

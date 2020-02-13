@@ -36,13 +36,16 @@ class Exercise extends Component {
 
   render() {
     return (
-      <div>
-
+      <div className="exercises">
+        <Link to={`/regiments/`} >
+          Regmients
+        </Link>  
         <Link to={`/regiments/${this.props.match.params.id}`} >
           <button>Add Exercise</button>
         </Link>
         {this.state.exercises.map((exercise, key) => (
           <div key={key}> {exercise.name}
+            
             <button onClick={e => {this.delete(e, exercise.id)}}>
             Delete
           </button>

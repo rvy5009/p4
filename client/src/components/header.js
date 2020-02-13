@@ -22,7 +22,7 @@ class Header extends Component  {
 
   render() {
     return (
-      <div>
+      <header>
         {this.props.currentUser ?
           <div>
             <h1> Hello, {this.props.currentUser.name} </h1>
@@ -39,7 +39,7 @@ class Header extends Component  {
           </nav>
           }
 
-      </div>
+      </header>
     )
   }
 }
