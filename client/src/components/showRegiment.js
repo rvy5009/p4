@@ -26,7 +26,7 @@ class Regiment extends Component {
     }
   }
 
-  delete = async (e, regimentId) => {
+  deleteReg = async (e, regimentId) => {
     e.preventDefault()
     try {
       await deleteRegiment(regimentId)
@@ -52,10 +52,10 @@ class Regiment extends Component {
           <Link to={`/regiments/${regiment.id}/exercises`} >
             <button>Exercises</button>
           </Link>
-          <button onClick={e => {this.delete(e, regiment.id)}}>
+          <button onClick={e => {this.deleteReg(e, regiment.id)}}>
             Delete
           </button>
-          <Link to={`/updateRegiment/${regiment.id}`} id={regiment.id}>
+          <Link to={`/regiments/${regiment.id}`} id={regiment.id}>
             <button>Update</button>
           </Link>
         </div>))}
