@@ -8,7 +8,7 @@ import LoginForm from './components/loginForm'
 import Regiment from './components/showRegiment'
 import UpdateRegiment from './components/updateRegiment'
 import AddExercise from './components/addExercise'
-import showExercises from './components/showExercises'
+import Exercise from './components/showExercises'
 
 class App extends Component {
   constructor(props) {
@@ -94,7 +94,9 @@ class App extends Component {
         <Route exact path="/createRegiment" render={() => <CreateRegiment />} />
         <Route exact path="/updateRegiment/:id" component={UpdateRegiment} />
         <Route exact path="/regiments/:id" render={() => <AddExercise />} />
-        <Route exact path="/regiments/:id/exercises" component={showExercises} />
+        <Route path={`/regiments/:id/exercises`}
+              render={() => <Exercise />}
+            />
 
       </div>
     );

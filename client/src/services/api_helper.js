@@ -51,7 +51,7 @@ export const deleteRegiment = async id => {
 export const updateRegiment = async (id, updateData) => {
   const resp = await api.put(`/regiments/${id}`, updateData);
   return resp.data;
-};
+}
 
 export const addExercise = async (id, postData) => {
   const resp = await api.post(`/regiments/${id}/exercises`, postData)
@@ -60,15 +60,21 @@ export const addExercise = async (id, postData) => {
 
 export const allExercises = async (id) => {
   const resp = await api.get(`/regiments/${id}/exercises`)
-  
   return resp.data
 }
 
 export const updateExerciseApi = async (regId, updateData, exId) => {
   const resp = await api.put(`/regiments/${regId}/exercises/${exId}`, updateData);
   return resp.data;
-};
-export const deleteExercise = async id => {
-  const resp = await api.delete(`/regiments/${id}`)
-  return resp.data
 }
+
+
+export const oneExercise = async (regId, exId) => {
+  const resp = await api.get(`/regiments/${regId}/exercises/${exId}`)
+  return resp.data;
+};
+
+export const deleteExercise = async (regId, exId) => {
+  const resp = await api.delete(`/regiments/${regId}/exercises/${exId}`)
+  return resp.data;
+};
