@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import { allRegiments, verifyUser,deleteRegiment } from "../services/api_helper";
 
-import { Link, withRouter } from "react-router-dom";
+import { Link, withRouter,Route } from "react-router-dom";
+import updateExercise from './updateExercise'
+
 
 class Regiment extends Component {
   constructor(props) {
@@ -41,7 +43,11 @@ class Regiment extends Component {
     return (
       <div>
         {this.state.regiments.map((regiment, key) => (
-        <div key={key}> {regiment.title}
+          <div key={key}> {regiment.title}
+            <Route path={`/regiments/${regiment.id}/exercises/:id`}
+              component={updateExercise}
+              id = {"a"}
+            />
           <Link to={`/regiments/${regiment.id}/exercises`} id={regiment.id} >
             <button>Exercises</button>
           </Link>

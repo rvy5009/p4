@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import { registerUser, loginUser, verifyUser } from './services/api_helper'
 import { Route, Link, withRouter } from 'react-router-dom'
 
-import CreateRegiment from './components/createRegiment'
+import CreateRegiment from './components/addRegiment'
 import RegisterForm from './components/registerForm'
 import LoginForm from './components/loginForm'
-import Regiment from './components/regiment'
+import Regiment from './components/showRegiment'
 import UpdateRegiment from './components/updateRegiment'
 import AddExercise from './components/addExercise'
 import showExercises from './components/showExercises'
@@ -19,14 +19,14 @@ class App extends Component {
       password: "",
       currentUser: null,
       errorText: ""
-      
+
     }
   }
   handleRegister = async (e, registerData) => {
     e.preventDefault()
     const currentUser = await registerUser(registerData)
-      this.setState({ currentUser })
-      this.props.history.push('/regmients')
+    this.setState({ currentUser })
+    this.props.history.push('/regmients')
 
   }
 
@@ -47,19 +47,19 @@ class App extends Component {
   }
 
   componentDidMount() {
-    
+
     verifyUser();
     if (localStorage.getItem('authToken')) {
       const name = localStorage.getItem('name')
       const email = localStorage.getItem('email')
-      const user = {name, email}
+      const user = { name, email }
       user && this.setState({
         currentUser: user
       })
     }
   }
   render() {
-    
+
     return (
       <div className="App">
         {this.state.currentUser ?
@@ -68,13 +68,13 @@ class App extends Component {
             <button onClick={this.handleLogout}> Logout!!</button>
           </div>
           :
-        <nav>
-          <Link to="/register"><button>Register</button></Link>
+          <nav>
+            <Link to="/register"><button>Register</button></Link>
             <Link to="/login"><button>Login</button></Link>
             <Link to="/createRegiment">
-            Create regiment
+              Create regiment
             </Link>
-        </nav>
+          </nav>
         }
         <Route path="/login" render={() => (
           <LoginForm
@@ -95,6 +95,7 @@ class App extends Component {
         <Route exact path="/updateRegiment/:id" component={UpdateRegiment} />
         <Route exact path="/regiments/:id" render={() => <AddExercise />} />
         <Route exact path="/regiments/:id/exercises" component={showExercises} />
+
       </div>
     );
   }

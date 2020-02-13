@@ -60,10 +60,15 @@ export const addExercise = async (id, postData) => {
 
 export const allExercises = async (id) => {
   const resp = await api.get(`/regiments/${id}/exercises`)
+  
   return resp.data
 }
 
-export const updateExercise = async (regId, updateData, exId) => {
+export const updateExerciseApi = async (regId, updateData, exId) => {
   const resp = await api.put(`/regiments/${regId}/exercises/${exId}`, updateData);
   return resp.data;
 };
+export const deleteExercise = async id => {
+  const resp = await api.delete(`/regiments/${id}`)
+  return resp.data
+}

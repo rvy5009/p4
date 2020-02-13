@@ -1,27 +1,32 @@
 import React, { Component } from "react";
-import { updateExercise, allExercises } from "../services/api_helper";
+import { updateExerciseApi, allExercises } from "../services/api_helper";
 import { withRouter } from "react-router-dom";
 
 class UpdateExercise extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
-      done: "",
-      image: "",
-      instructions: "",
+        name: "",
+        done: "",
+        image: "",
+        instructions: "",
+        id: ""
     };
   }
 
   async componentDidMount() {
     const id = this.props.match.params.id;
+    console.log(id)
     try {
-      const resp = await allExercises(id);
+      const resp = await allExercises(this.props.exercise.id);
+      console.log(resp)
       this.setState({
+        
         name: resp.name,
         image: resp.image,
         done: resp.done,
         instructions: resp.instructions,
+        id: id
       });
     } catch (e) {
       console.log(e);
@@ -35,14 +40,15 @@ class UpdateExercise extends Component {
     });
   }
   render() {
+    // console.log(this.state.id)
     return (
       <div>
         <div>
           
           <form
-          onSubmit={e => {
+            onSubmit={e => {
             e.preventDefault();
-            updateExercise(this.props.match.params.id, this.state);
+            updateExerciseApi(this.props.exercise.id, this.state,1);
             this.props.history.push("/regiments")
           }}
           >
