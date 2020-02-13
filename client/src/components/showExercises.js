@@ -24,17 +24,11 @@ class Exercise extends Component {
     }
   }
 
-  delete = async (e, exerciseId) => {
+  delete = async (e, exId ) => {
     e.preventDefault()
-    const id = this.props.match.params.id;
-    console.log(id)
-    console.log(this.props.regId)    
+    const id = this.props.match.params.id
     try {
-      await deleteExercise(this.props.regId,id)
-      const exercises = this.state.exercises.filter(exercise => exercise.id !== exerciseId)
-      this.setState({
-        exercises
-      })
+      await deleteExercise(id, exId)
     } catch (e) {
       console.log(e)
     }
@@ -52,7 +46,7 @@ class Exercise extends Component {
             <button onClick={e => {this.delete(e, exercise.id)}}>
             Delete
           </button>
-            <Link to={`/regiments/3/exercises/${exercise.id}`} id={exercise.id}>
+            <Link to={`/regiments/${this.props.match.params.id}/exercises/${exercise.id}`} id={exercise.id}>
               <button>Update</button>
             </Link>
           </div>))}
