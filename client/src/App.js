@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
+import { Route, Link ,withRouter } from 'react-router-dom'
 import { registerUser, loginUser, verifyUser } from './services/api_helper'
-import { Route, Link, withRouter } from 'react-router-dom'
 
 import CreateRegiment from './components/addRegiment'
 import RegisterForm from './components/registerForm'
@@ -9,6 +9,8 @@ import Regiment from './components/showRegiment'
 import UpdateRegiment from './components/updateRegiment'
 import AddExercise from './components/addExercise'
 import Exercise from './components/showExercises'
+// import Header from './components/header'
+
 
 class App extends Component {
   constructor(props) {
@@ -36,7 +38,6 @@ class App extends Component {
     this.setState({ currentUser })
     this.props.history.push("/regiments")
   }
-
   handleLogout = () => {
     this.setState({
       currentUser: null
@@ -44,8 +45,8 @@ class App extends Component {
     localStorage.removeItem('authToken')
     localStorage.removeItem('name')
     localStorage.removeItem('email')
+    this.props.history.push("/")
   }
-
   componentDidMount() {
 
     verifyUser();
@@ -62,20 +63,26 @@ class App extends Component {
 
     return (
       <div className="App">
+        {/* <Header currentUser={this.state.currentUser}
+          handleLogout={this.handleLogout}
+        /> */}
+        {/* hello im a header */}
         {this.state.currentUser ?
           <div>
             <h1> Hello, {this.state.currentUser.name} </h1>
             <button onClick={this.handleLogout}> Logout!!</button>
+            <Link to="/createRegiment">
+            Create regiment
+            </Link>
           </div>
           :
           <nav>
             <Link to="/register"><button>Register</button></Link>
             <Link to="/login"><button>Login</button></Link>
-            <Link to="/createRegiment">
-              Create regiment
-            </Link>
+
           </nav>
-        }
+          }
+
         <Route path="/login" render={() => (
           <LoginForm
             handleLogin={this.handleLogin}
