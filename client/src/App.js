@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Route, Link ,withRouter } from 'react-router-dom'
+import { Route ,withRouter } from 'react-router-dom'
 import { registerUser, loginUser, verifyUser } from './services/api_helper'
 
 import CreateRegiment from './components/addRegiment'
@@ -9,7 +9,7 @@ import Regiment from './components/showRegiment'
 import UpdateRegiment from './components/updateRegiment'
 import AddExercise from './components/addExercise'
 import Exercise from './components/showExercises'
-// import Header from './components/header'
+import Header from './components/header'
 
 
 class App extends Component {
@@ -63,25 +63,10 @@ class App extends Component {
 
     return (
       <div className="App">
-        {/* <Header currentUser={this.state.currentUser}
+        <Header currentUser={this.state.currentUser}
           handleLogout={this.handleLogout}
-        /> */}
-        {/* hello im a header */}
-        {this.state.currentUser ?
-          <div>
-            <h1> Hello, {this.state.currentUser.name} </h1>
-            <button onClick={this.handleLogout}> Logout!!</button>
-            <Link to="/createRegiment">
-            Create regiment
-            </Link>
-          </div>
-          :
-          <nav>
-            <Link to="/register"><button>Register</button></Link>
-            <Link to="/login"><button>Login</button></Link>
+        />
 
-          </nav>
-          }
 
         <Route path="/login" render={() => (
           <LoginForm

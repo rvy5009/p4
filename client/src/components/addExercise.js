@@ -29,13 +29,11 @@ class AddExercise extends Component {
 
   handleSubmit = async e => {
     verifyUser()
-    const id = this.props.match.params.id;
-    console.log(id)
-    console.log(this.state.exercises)
-    e.preventDefault();
+    const id = this.props.match.params.id
+    e.preventDefault()
     verifyUser()
     try {
-      addExercise(id, this.state.exercises);
+      addExercise(id, this.state.exercises)
 
     } catch (e) {
       console.log(e);
