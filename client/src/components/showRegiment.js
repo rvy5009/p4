@@ -41,17 +41,18 @@ class Regiment extends Component {
 
   render() {
     return (
-      
-      <div>
+      <div className="outerRegiment1">
         <Link to="/createRegiment">
           Create regiment
         </Link>
+
+      <div className= "outerRegiments">
 
         {this.state.regiments.map((regiment, key) => (
           
         <div className="regiments" key={key}>
           
-            {regiment.title}
+          <h2> {regiment.title}</h2> 
             
             
           
@@ -59,14 +60,17 @@ class Regiment extends Component {
            <img src={regiment.image} alt= "yoga" className="regimentImage"/>
             </Link>
             {regiment.info}
+          <div>
           <button onClick={e => {this.deleteReg(e, regiment.id)}}>
             Delete
           </button>
           <Link to={`/updateRegiment/${regiment.id}`} id={regiment.id}>
             <button>Update</button>
-          </Link>
+              </Link>
+          </div>
         </div>))}
-      </div>
+        </div>
+        </div>
     )
   }
 }

@@ -55,14 +55,16 @@ class Exercise extends Component {
         {this.state.exercises.map((exercise, key) => (
           <div key={key} className="exerciseMap"> {exercise.name}
             {/* {exercise.done} */}
-            <ReactPlayer url={exercise.image} className="exerciseVideo" alt="video" height={80} width={80}/>
+            <ReactPlayer url={exercise.image} className="exerciseVideo" alt="video" height={150} width={150}/>
             {exercise.instructions}
+          <div>
           <button onClick={e => {this.delete(e, exercise.id)}}>
             Delete
           </button>
             <Link to={`/regiments/${this.props.match.params.id}/exercises/${exercise.id}`} id={exercise.id}>
               <button>Update</button>
             </Link>
+          </div>
           </div>))}
         
       </div>

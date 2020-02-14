@@ -19,7 +19,7 @@ class Header extends Component {
     return (
       <header>
         {this.props.currentUser ?
-          <div>
+          <div className="hello">
             <h1> Hello, {this.props.currentUser.name} </h1>
             <button onClick={this.props.handleLogout}> Logout!!</button>
 
