@@ -16,10 +16,8 @@ class UpdateExercise extends Component {
   }
 
   async componentDidMount() {
-    const id = this.props.match.params.id;
     try {
-      const resp = await oneExercise(this.props.regId,id);
-      console.log(resp)
+      const resp = await oneExercise(this.props.regimentId,this.props.exerciseId);
       this.setState({
         name: resp.name,
         image: resp.image,
@@ -48,7 +46,7 @@ class UpdateExercise extends Component {
             onSubmit={e => {
             e.preventDefault();
             updateExerciseApi(this.props.regimentId, this.state,this.props.exerciseId)
-            this.props.history.push("/regiments")
+            this.props.history.push(`/regiments/${this.props.regimentId}/exercises`)
           }}
           >
           <label htmlFor="name">name</label>
