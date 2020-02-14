@@ -12,7 +12,7 @@ export const loginUser = async (loginData) => {
   localStorage.setItem('authToken', resp.data.auth_token)
   localStorage.setItem('name', resp.data.name)
   localStorage.setItem('email', resp.data.email)
-  return resp.data.user
+  return resp.data
 }
 
 export const registerUser = async (registerData) => {
@@ -22,7 +22,7 @@ export const registerUser = async (registerData) => {
   localStorage.setItem('authToken', resp.data.auth_token)
   localStorage.setItem('name', resp.data.name)
   localStorage.setItem('email', resp.data.email)
-  return resp.data.user
+  return resp.data
 
 }
 
@@ -49,8 +49,8 @@ export const deleteRegiment = async id => {
 }
 
 export const updateRegiment = async (id, updateData) => {
-  const resp = await api.put(`/regiments/${id}`, updateData);
-  return resp.data;
+  await api.put(`/regiments/${id}`, updateData);
+ 
 }
 
 export const oneRegiment = async (regId) => {
@@ -73,8 +73,7 @@ export const allExercises = async (id) => {
 }
 
 export const updateExerciseApi = async (regId, updateData, exId) => {
-  const resp = await api.put(`/regiments/${regId}/exercises/${exId}`, updateData);
-  return resp.data;
+  await api.put(`/regiments/${regId}/exercises/${exId}`, updateData);
 }
 
 

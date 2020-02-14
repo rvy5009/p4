@@ -1,15 +1,10 @@
-import React, {Component} from "react"
-import {Link ,withRouter} from "react-router-dom"
+import React, { Component } from "react"
+import { Link, withRouter } from "react-router-dom"
 
-class Header extends Component  {
+class Header extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      name: "",
-      email: "",
-      password: "",
-      currentUser: null,
-      errorText: ""
     }
   }
 
@@ -27,9 +22,7 @@ class Header extends Component  {
           <div>
             <h1> Hello, {this.props.currentUser.name} </h1>
             <button onClick={this.props.handleLogout}> Logout!!</button>
-            <Link to="/createRegiment">
-            Create regiment
-            </Link>
+
           </div>
           :
           <nav>
@@ -37,7 +30,7 @@ class Header extends Component  {
             <Link to="/login"><button>Login</button></Link>
 
           </nav>
-          }
+        }
 
       </header>
     )

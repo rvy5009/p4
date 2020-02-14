@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Route, withRouter } from 'react-router-dom'
-import { registerUser, loginUser, verifyUser } from './services/api_helper'
+import { registerUser, loginUser, verifyUser, updateExerciseApi } from './services/api_helper'
 import './App.css';
 
 import CreateRegiment from './components/addRegiment'
@@ -37,7 +37,8 @@ class App extends Component {
 
   handleLogin = async (e, loginData) => {
     e.preventDefault()
-    const currentUser = await loginUser(loginData)
+    const currentUser = await loginUser(loginData);
+    console.log(currentUser)
     this.setState({ currentUser })
     this.props.history.push("/regiments")
   }
@@ -62,8 +63,14 @@ class App extends Component {
       })
     }
   }
-  render() {
 
+  handleSubmit = async (e, data, regimentId, exerciseId) => {
+    e.preventDefault();
+    await updateExerciseApi(regimentId, data, exerciseId)
+    this.props.history.push(`/regiments/${regimentId}/exercises`)
+  }
+
+  render() {
     return (
       <div className="App">
         <Header currentUser={this.state.currentUser}
@@ -96,6 +103,7 @@ class App extends Component {
           render={(props) => <UpdateExercise
             regimentId={props.match.params.reg_id}
             exerciseId={props.match.params.exer_id}
+            handleSubmit={this.handleSubmit}
           />}
         />
 

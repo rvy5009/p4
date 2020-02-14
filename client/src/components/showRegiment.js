@@ -40,10 +40,12 @@ class Regiment extends Component {
   }
 
   render() {
-    // console.log(this.state.regiments)
     return (
       
-      <div className="regiments">
+      <div>
+        <Link to="/createRegiment">
+          Create regiment
+        </Link>
 
         {this.state.regiments.map((regiment, key) => (
           

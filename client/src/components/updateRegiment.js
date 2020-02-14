@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { updateRegiment, oneRegiment, verifyUser } from "../services/api_helper";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link} from "react-router-dom";
 
 class UpdateRegiment extends Component {
   constructor(props) {
@@ -38,6 +38,9 @@ class UpdateRegiment extends Component {
   render() {
     return (
       <div>
+                <Link to={`/regiments`} >
+          Regmients
+        </Link> 
         <div>
           
           <form
