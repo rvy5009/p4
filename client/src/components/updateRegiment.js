@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { updateRegiment, allRegiments } from "../services/api_helper";
+import { updateRegiment, oneRegiment, verifyUser } from "../services/api_helper";
 import { withRouter } from "react-router-dom";
 
 class UpdateRegiment extends Component {
@@ -13,9 +13,12 @@ class UpdateRegiment extends Component {
   }
 
   async componentDidMount() {
+    verifyUser()
     const id = this.props.match.params.id;
+    console.log(id)
     try {
-      const resp = await allRegiments(id);
+      const resp = await oneRegiment(id);
+      // console.log(resp)
       this.setState({
         title: resp.title,
         image: resp.image,
