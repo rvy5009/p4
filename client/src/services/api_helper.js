@@ -53,6 +53,15 @@ export const updateRegiment = async (id, updateData) => {
   return resp.data;
 }
 
+export const oneRegiment = async (regId) => {
+  const resp = await api.get(`/regiments/${regId}`)
+  console.log(resp)
+  return resp.data;
+};
+
+
+
+
 export const addExercise = async (id, postData) => {
   const resp = await api.post(`/regiments/${id}/exercises`, postData)
   return resp.data

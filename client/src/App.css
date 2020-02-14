@@ -13,7 +13,13 @@ body{
   width: 20vw;
   height: 20vh;
   background: lightcoral;
-  margin: 5px;
+  margin: 20px;
+  /* display: flex;
+  flex-direction: row; */
+}
+.regimentImage{
+  width: 5vw;
+  height: 5vh;
 }
 
 .exercises{
