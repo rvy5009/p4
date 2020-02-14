@@ -38,10 +38,11 @@ class UpdateExercise extends Component {
     });
   }
   render() {
+    console.log("hi")
     return (
       <div>
         <div>
-        <Link to={`/regiments/`} >
+        <Link to={`/regiments`} >
             Regmients
           </Link>
           <form

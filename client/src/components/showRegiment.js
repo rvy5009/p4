@@ -40,7 +40,7 @@ class Regiment extends Component {
   }
 
   render() {
-    console.log(this.state.regiments)
+    // console.log(this.state.regiments)
     return (
       
       <div className="regiments">
