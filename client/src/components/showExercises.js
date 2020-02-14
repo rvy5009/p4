@@ -29,9 +29,14 @@ class Exercise extends Component {
     const id = this.props.match.params.id
     try {
       await deleteExercise(id, exId)
+      const exercises = this.state.exercises.filter(exercise => exercise.id !== exId)
+      this.setState({
+        exercises
+      })
     } catch (e) {
       console.log(e)
     }
+
   }
 
   render() {

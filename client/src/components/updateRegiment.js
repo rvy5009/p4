@@ -15,7 +15,6 @@ class UpdateRegiment extends Component {
   async componentDidMount() {
     verifyUser()
     const id = this.props.match.params.id;
-    console.log(id)
     try {
       const resp = await oneRegiment(id);
       // console.log(resp)
