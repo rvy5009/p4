@@ -29,7 +29,7 @@ class RegimentsController < ApplicationController
   private
 
   def regiment_params
-    params.permit(:title, :created_by)
+    params.permit(:title, :image ,:info ,:created_by)
   end
 
   def set_regiment
