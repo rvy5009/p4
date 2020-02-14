@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Route ,withRouter } from 'react-router-dom'
+import { Route, withRouter } from 'react-router-dom'
 import { registerUser, loginUser, verifyUser } from './services/api_helper'
 import './App.css';
 
@@ -11,6 +11,7 @@ import UpdateRegiment from './components/updateRegiment'
 import AddExercise from './components/addExercise'
 import Exercise from './components/showExercises'
 import Header from './components/header'
+import UpdateExercise from './components/updateExercise'
 
 
 
@@ -88,13 +89,18 @@ class App extends Component {
         <Route exact path="/createRegiment" render={() => <CreateRegiment />} />
         <Route exact path="/updateRegiment/:id" component={UpdateRegiment} />
         <Route exact path="/regiments/:id" render={() => <AddExercise />} />
-        <Route path={`/regiments/:id/exercises`}
-              render={() => <Exercise />}
-            />
+        <Route exact path={`/regiments/:id/exercises`}
+          render={() => <Exercise />}
+        />
+        <Route exact path={`/regiments/:reg_id/exercises/:exer_id`}
+          render={(props) => <UpdateExercise
+            regimentId={props.match.params.reg_id}
+            exerciseId={props.match.params.exer_id}
+          />}
+        />
 
       </div>
     );
   }
 }
-
 export default withRouter(App);

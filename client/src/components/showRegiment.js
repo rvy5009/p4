@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { allRegiments, verifyUser,deleteRegiment } from "../services/api_helper";
 
-import { Link, withRouter,Route } from "react-router-dom";
-import UpdateExercise from './updateExercise'
+import { Link, withRouter } from "react-router-dom";
+
 
 
 class Regiment extends Component {
@@ -52,9 +52,7 @@ class Regiment extends Component {
             {regiment.title}
             
             
-          <Route path={`/regiments/${regiment.id}/exercises/:id`}
-            render={() => <UpdateExercise regId={regiment.id}/>}
-          />
+          
           <Link to={`/regiments/${regiment.id}/exercises`} >
            <img src={regiment.image} alt= "yoga" className="regimentImage"/>
             </Link>

@@ -35,10 +35,11 @@ class Exercise extends Component {
   }
 
   render() {
-    console.log(this.props.match.params.id)
-    console.log(this.state.exercises)
+    // console.log(this.props.match.params.id)
+    // console.log(this.state.exercises)
     return (
       <div className="exercises">
+        
         <Link to={`/regiments/`} >
           Regmients
         </Link>  

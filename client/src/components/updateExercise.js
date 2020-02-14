@@ -32,23 +32,22 @@ class UpdateExercise extends Component {
   }
 
   handleChange = e => {
-    const { name, value } = e.target;
+    const { name, value } = e.target
     this.setState({
       [name]: value
     });
   }
   render() {
-    console.log("hi")
     return (
       <div>
         <div>
-        <Link to={`/regiments`} >
-            Regmients
+        <Link to={`/regiments/${this.props.regimentId}/exercises`} >
+            Exercises
           </Link>
           <form
             onSubmit={e => {
             e.preventDefault();
-            updateExerciseApi(this.props.regId, this.state,this.props.match.params.id);
+            updateExerciseApi(this.props.regimentId, this.state,this.props.exerciseId)
             this.props.history.push("/regiments")
           }}
           >
