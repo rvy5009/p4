@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { allExercises, verifyUser, deleteExercise } from "../services/api_helper";
-
+// import ReactPlayer from 'react-player'
 import { Link, withRouter } from "react-router-dom";
 class Exercise extends Component {
   constructor(props) {
@@ -43,10 +43,15 @@ class Exercise extends Component {
         <Link to={`/regiments/${this.props.match.params.id}`} >
           <button>Add Exercise</button>
         </Link>
+
         {this.state.exercises.map((exercise, key) => (
-          <div key={key}> {exercise.name}
-            
-            <button onClick={e => {this.delete(e, exercise.id)}}>
+          <div key={key} className="exerciseMap"> {exercise.name}
+            {/* {exercise.done} */}
+            {exercise.image}
+            {/* <ReactPlayer url='https://www.youtube.com/watch?v=ysz5S6PUM-U' className="exerciseVideo" alt="video" height={80} width={80}/> */}
+            {exercise.instructions}
+
+          <button onClick={e => {this.delete(e, exercise.id)}}>
             Delete
           </button>
             <Link to={`/regiments/${this.props.match.params.id}/exercises/${exercise.id}`} id={exercise.id}>

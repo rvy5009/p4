@@ -42,7 +42,9 @@ class Regiment extends Component {
   render() {
     console.log(this.state.regiments)
     return (
+      
       <div className="regiments">
+
         {this.state.regiments.map((regiment, key) => (
           
         <div className="regiments" key={key}>
