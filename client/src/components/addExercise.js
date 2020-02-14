@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { verifyUser, addExercise } from "../services/api_helper";
-import { withRouter } from 'react-router-dom'
+import { withRouter,Link } from 'react-router-dom'
 
 
 class AddExercise extends Component {
@@ -45,6 +45,9 @@ class AddExercise extends Component {
     
     return (
       <div>
+          <Link to={`/regiments/${this.props.match.params.id}/exercises`} >
+            Exercises
+          </Link>
         <div>
           <form onSubmit={e => this.handleSubmit(e)}>
             <input

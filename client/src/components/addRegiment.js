@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { newRegiment, verifyUser } from "../services/api_helper";
-import {withRouter } from 'react-router-dom'
+import {withRouter, Link} from 'react-router-dom'
 class CreateRegiment extends Component {
   constructor(props) {
     super(props);
@@ -41,6 +41,9 @@ class CreateRegiment extends Component {
     
     return (
       <div>
+        <Link to={`/regiments`} >
+          Regmients
+        </Link> 
         <div>
           <form onSubmit={e => this.handleSubmit(e)}>
             <input
