@@ -44,12 +44,12 @@ class AddExercise extends Component {
   render() {
     
     return (
-      <div>
+      <div className="addExercise">
           <Link to={`/regiments/${this.props.match.params.id}/exercises`} >
             Exercises
           </Link>
-        <div>
-          <form onSubmit={e => this.handleSubmit(e)}>
+        <div >
+          <form onSubmit={e => this.handleSubmit(e)} >
             <input
               type="text"
               name="name"

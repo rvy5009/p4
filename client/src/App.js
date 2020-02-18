@@ -31,7 +31,7 @@ class App extends Component {
     e.preventDefault()
     const currentUser = await registerUser(registerData)
     this.setState({ currentUser })
-    this.props.history.push('/regmients')
+    this.props.history.push('/regiments')
 
   }
 

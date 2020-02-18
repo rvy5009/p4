@@ -38,8 +38,7 @@ class UpdateExercise extends Component {
 
   render() {
     return (
-      <div>
-        <div>
+      <div className="updateExercise">
           <Link to={`/regiments/${this.props.regimentId}/exercises`} >
             Exercises
           </Link>
@@ -49,43 +48,40 @@ class UpdateExercise extends Component {
               this.props.handleSubmit(e, this.state, this.props.regimentId, this.props.exerciseId)
             }}
           >
-            <label htmlFor="name">name</label>
-            <input
+          <input
+              placeholder= "title"
               type="text"
               name="name"
               value={this.state.name}
               onChange={this.handleChange}
             />
             <br />
-            <label htmlFor="image">Video Url</label>
-            <input
+          <input
+              placeholder= "Video Url"
               type="text"
               name="image"
               value={this.state.image}
               onChange={this.handleChange}
             />
             <br />
-            <label htmlFor="info">done </label>
             <input
+              placeholder= "status"
               type="text"
               name="done"
               value={this.state.done}
               onChange={this.handleChange}
             />
-
             <br />
-            <label htmlFor="info">instructions </label>
             <input
+              placeholder= "info"
               type="text"
               name="instructions"
               value={this.state.instructions}
               onChange={this.handleChange}
             />
-
             <br />
             <button type="submit">Update Exercise </button>
           </form>
-        </div>
       </div>
     );
   }

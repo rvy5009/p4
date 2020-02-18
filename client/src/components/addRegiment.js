@@ -40,7 +40,7 @@ class CreateRegiment extends Component {
   render() {
     
     return (
-      <div>
+      <div className="addRegiment">
         <Link to={`/regiments`} >
           Regmients
         </Link> 

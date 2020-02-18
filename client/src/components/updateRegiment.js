@@ -36,8 +36,8 @@ class UpdateRegiment extends Component {
   }
   render() {
     return (
-      <div>
-                <Link to={`/regiments`} >
+      <div className="updateRegiment">
+        <Link to={`/regiments`} >
           Regmients
         </Link> 
         <div>
@@ -49,24 +49,26 @@ class UpdateRegiment extends Component {
             this.props.history.push("/regiments")
           }}
           >
-          <label htmlFor="name">name</label>
+          
           <input
+            placeholder= "name"
             type="text"
             name="title"
             value={this.state.title}
             onChange={this.handleChange}
           />
           <br />
-          <label htmlFor="image">Image url</label>
+          
           <input
+            placeholder= "Image Url"
             type="text"
             name="image"
             value={this.state.image}
             onChange={this.handleChange}
           />
           <br />
-          <label htmlFor="info">info </label>
           <input
+            placeholder= "info"
             type="text"
             name="info"
             value={this.state.info}

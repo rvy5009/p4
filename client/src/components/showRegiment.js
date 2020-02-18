@@ -59,10 +59,10 @@ class Regiment extends Component {
             <Link to={`/regiments/${regiment.id}/exercises`} >
               <div className="regimentImageDiv">
                 <img src={regiment.image} alt={regiment.title} className="regimentImage" />
-                Enter Regiment
+                <span className="regiment-label">Enter Regiment</span>
               </div>
             </Link>
-            {regiment.info}
+            <span className="regiment-label">{regiment.info}</span>
           <div>
           <button onClick={e => {this.deleteReg(e, regiment.id)}}>
             Delete
