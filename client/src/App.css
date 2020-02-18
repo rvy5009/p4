@@ -28,7 +28,6 @@ header {
 .regiments{
   width: 45vw;
   height: 70vh;
-  /* background-color: rgba(145, 61, 136, .7); */
   margin: 20px;
   display: flex;
   flex-direction: column;
@@ -43,8 +42,8 @@ header {
 
 }
 .regimentImage{
-  width: 20vw;
-  height: 40vh;
+  width: 25vw;
+  height: 41vh;
   object-fit: cover;
   box-shadow: 5px 10px rgba(145, 61, 136, .7);;
   margin-bottom: 10px;
@@ -58,7 +57,6 @@ text-align: center;
   flex-direction: column;
 }
 button{
-  /* background-color: rgba(197, 239, 247, 1); */
   background-color: hotpink;
   font-family: "Poppins"
 }
@@ -96,7 +94,6 @@ button{
   position: relative;  
   height: 45vh;
   width: 40vw;
-  /* padding-top: 56.25% Player ratio: 100 / (1280 / 720) */
 }
 
 .outerExercise{
@@ -163,4 +160,29 @@ button:hover {
 button{
   margin: 2px;
   width: 5vw;
+}
+
+
+
+
+
+@media (max-width: 600px){
+
+  .regiments, .exerciseMap{
+    width: 80vw;
+    /* height: 80vh */
+  }
+  .regimentImage{
+    width: 70vw;
+    object-fit: contain;
+    height: 45vh;
+    box-shadow: 0 0;
+  }
+  button{
+    width: 15vw;
+  }
+  .videoWrapper{
+    width: 80vw;
+    height: 50vh
+  }
 }

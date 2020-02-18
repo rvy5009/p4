@@ -76,7 +76,7 @@ class UpdateRegiment extends Component {
           />
 
           <br />
-          <button type="submit">Update Regiment </button>
+          <button type="submit">Update</button>
           </form>
         </div>
       </div>
