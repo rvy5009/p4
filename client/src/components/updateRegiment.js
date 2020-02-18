@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { updateRegiment, oneRegiment, verifyUser } from "../services/api_helper";
-import { withRouter, Link} from "react-router-dom";
+import React, { Component } from "react"
+import { updateRegiment, oneRegiment, verifyUser } from "../services/api_helper"
+import { withRouter, Link } from "react-router-dom"
 
 class UpdateRegiment extends Component {
   constructor(props) {
@@ -9,14 +9,14 @@ class UpdateRegiment extends Component {
       title: "",
       image: "",
       info: "",
-    };
+    }
   }
 
   async componentDidMount() {
     verifyUser()
-    const id = this.props.match.params.id;
+    const id = this.props.match.params.id
     try {
-      const resp = await oneRegiment(id);
+      const resp = await oneRegiment(id)
       // console.log(resp)
       this.setState({
         title: resp.title,
@@ -24,63 +24,61 @@ class UpdateRegiment extends Component {
         info: resp.info
       });
     } catch (e) {
-      console.log(e);
+      console.log(e)
     }
   }
 
   handleChange = e => {
-    const { name, value } = e.target;
+    const { name, value } = e.target
     this.setState({
       [name]: value
-    });
+    })
   }
+
   render() {
     return (
       <div className="updateRegiment">
         <Link to={`/regiments`} >
           Regmients
-        </Link> 
+        </Link>
         <div>
-          
           <form
-          onSubmit={e => {
-            e.preventDefault();
-            updateRegiment(this.props.match.params.id, this.state);
-            this.props.history.push("/regiments")
-          }}
+            onSubmit={e => {
+              e.preventDefault();
+              updateRegiment(this.props.match.params.id, this.state);
+              this.props.history.push("/regiments")
+            }}
           >
-          
-          <input
-            placeholder= "name"
-            type="text"
-            name="title"
-            value={this.state.title}
-            onChange={this.handleChange}
-          />
-          <br />
-          
-          <input
-            placeholder= "Image Url"
-            type="text"
-            name="image"
-            value={this.state.image}
-            onChange={this.handleChange}
-          />
-          <br />
-          <input
-            placeholder= "info"
-            type="text"
-            name="info"
-            value={this.state.info}
-            onChange={this.handleChange}
-          />
+            <input
+              placeholder="name"
+              type="text"
+              name="title"
+              value={this.state.title}
+              onChange={this.handleChange}
+            />
+            <br />
+            <input
+              placeholder="Image Url"
+              type="text"
+              name="image"
+              value={this.state.image}
+              onChange={this.handleChange}
+            />
+            <br />
+            <input
+              placeholder="info"
+              type="text"
+              name="info"
+              value={this.state.info}
+              onChange={this.handleChange}
+            />
 
-          <br />
-          <button type="submit">Update</button>
+            <br />
+            <button type="submit">Update</button>
           </form>
         </div>
       </div>
-    );
+    )
   }
 }
 

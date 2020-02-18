@@ -5,7 +5,7 @@ import { withRouter,Link } from 'react-router-dom'
 
 class AddExercise extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       exercises: {
         name: "",
@@ -17,15 +17,14 @@ class AddExercise extends Component {
   }
 
   onChange = e => {
-    const { name, value } = e.target;
+    const { name, value } = e.target
     this.setState({
       exercises: {
         ...this.state.exercises,
         [name]: value
       }
-    });
-  };
-
+    })
+  }
 
   handleSubmit = async e => {
     verifyUser()
@@ -34,20 +33,18 @@ class AddExercise extends Component {
     verifyUser()
     try {
       addExercise(id, this.state.exercises)
-
     } catch (e) {
-      console.log(e);
+      console.log(e)
     }
     this.props.history.push(`/regiments/${this.props.match.params.id}/exercises`)
-  };
+  }
 
   render() {
-    
     return (
       <div className="addExercise">
-          <Link to={`/regiments/${this.props.match.params.id}/exercises`} >
-            Exercises
-          </Link>
+        <Link to={`/regiments/${this.props.match.params.id}/exercises`} >
+          Exercises
+        </Link>
         <div >
           <form onSubmit={e => this.handleSubmit(e)} >
             <input
@@ -86,11 +83,11 @@ class AddExercise extends Component {
           </form>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default withRouter(AddExercise);
+export default withRouter(AddExercise)
 
 
 

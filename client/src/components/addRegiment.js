@@ -3,7 +3,7 @@ import { newRegiment, verifyUser } from "../services/api_helper";
 import {withRouter, Link} from 'react-router-dom'
 class CreateRegiment extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       regiments: {
         title: "",
@@ -14,31 +14,28 @@ class CreateRegiment extends Component {
   }
 
   onChange = e => {
-    const { name, value } = e.target;
+    const { name, value } = e.target
     this.setState({
       regiments: {
         ...this.state.regiments,
         [name]: value
       }
-    });
-  };
-
+    })
+  }
 
   handleSubmit = async e => {
-  
     e.preventDefault();
     verifyUser()
     try {
-      newRegiment(this.state.regiments);
+      newRegiment(this.state.regiments)
 
     } catch (e) {
-      console.log(e);
+      console.log(e)
     }
     this.props.history.push('/regiments')
-  };
+  }
 
   render() {
-    
     return (
       <div className="addRegiment">
         <Link to={`/regiments`} >
@@ -74,11 +71,11 @@ class CreateRegiment extends Component {
           </form>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default withRouter(CreateRegiment);
+export default withRouter(CreateRegiment)
 
 
 

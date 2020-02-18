@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
-import { allRegiments, verifyUser,deleteRegiment } from "../services/api_helper";
-
-import { Link, withRouter } from "react-router-dom";
-
-
+import { allRegiments, verifyUser,deleteRegiment } from "../services/api_helper"
+import { Link, withRouter } from "react-router-dom"
 
 class Regiment extends Component {
   constructor(props) {
@@ -45,17 +42,10 @@ class Regiment extends Component {
         <Link to="/createRegiment">
           Create Workout Regiment
         </Link>
-
-      <div className= "outerRegiments">
-
-        {this.state.regiments.map((regiment, key) => (
-          
-        <div className="regiments" key={key}>
-          
-          <h2> {regiment.title}</h2> 
-            
-            
-          
+        <div className= "outerRegiments">
+          {this.state.regiments.map((regiment, key) => (         
+          <div className="regiments" key={key}>         
+            <h2> {regiment.title}</h2>           
             <Link to={`/regiments/${regiment.id}/exercises`} >
               <div className="regimentImageDiv">
                 <img src={regiment.image} alt={regiment.title} className="regimentImage" />
@@ -63,17 +53,17 @@ class Regiment extends Component {
               </div>
             </Link>
             <span className="regiment-label">{regiment.info}</span>
-          <div>
-          <button onClick={e => {this.deleteReg(e, regiment.id)}}>
-            Delete
-          </button>
-          <Link to={`/updateRegiment/${regiment.id}`} id={regiment.id}>
-            <button>Update</button>
-              </Link>
-          </div>
-        </div>))}
+            <div>
+            <button onClick={e => {this.deleteReg(e, regiment.id)}}>
+              Delete
+            </button>
+            <Link to={`/updateRegiment/${regiment.id}`} id={regiment.id}>
+              <button>Update</button>
+                </Link>
+            </div>
+          </div>))}
         </div>
-        </div>
+      </div>
     )
   }
 }

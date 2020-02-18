@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Route, withRouter } from 'react-router-dom'
 import { registerUser, loginUser, verifyUser, updateExerciseApi } from './services/api_helper'
-import './App.css';
+import './App.css'
 
 import CreateRegiment from './components/addRegiment'
 import RegisterForm from './components/registerForm'
@@ -32,7 +32,6 @@ class App extends Component {
     const currentUser = await registerUser(registerData)
     this.setState({ currentUser })
     this.props.history.push('/regiments')
-
   }
 
   handleLogin = async (e, loginData) => {
@@ -42,6 +41,7 @@ class App extends Component {
     this.setState({ currentUser })
     this.props.history.push("/regiments")
   }
+
   handleLogout = () => {
     this.setState({
       currentUser: null
@@ -51,9 +51,9 @@ class App extends Component {
     localStorage.removeItem('email')
     this.props.history.push("/")
   }
-  componentDidMount() {
 
-    verifyUser();
+  componentDidMount() {
+    verifyUser()
     if (localStorage.getItem('authToken')) {
       const name = localStorage.getItem('name')
       const email = localStorage.getItem('email')
@@ -76,14 +76,11 @@ class App extends Component {
         <Header currentUser={this.state.currentUser}
           handleLogout={this.handleLogout}
         />
-
-
         <Route path="/login" render={() => (
           <LoginForm
             handleLogin={this.handleLogin}
           />
         )} />
-
         <Route path="/register" render={() => (
           <RegisterForm
             handleRegister={this.handleRegister}
@@ -106,9 +103,9 @@ class App extends Component {
             handleSubmit={this.handleSubmit}
           />}
         />
-
       </div>
-    );
+    )
   }
 }
-export default withRouter(App);
+
+export default withRouter(App)
