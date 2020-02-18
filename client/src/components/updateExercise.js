@@ -57,7 +57,7 @@ class UpdateExercise extends Component {
               onChange={this.handleChange}
             />
             <br />
-            <label htmlFor="image">Image url</label>
+            <label htmlFor="image">Video Url</label>
             <input
               type="text"
               name="image"

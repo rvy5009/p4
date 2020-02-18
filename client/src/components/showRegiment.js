@@ -43,7 +43,7 @@ class Regiment extends Component {
     return (
       <div className="outerRegiment1">
         <Link to="/createRegiment">
-          Create regiment
+          Create Workout Regiment
         </Link>
 
       <div className= "outerRegiments">
@@ -56,8 +56,11 @@ class Regiment extends Component {
             
             
           
-          <Link to={`/regiments/${regiment.id}/exercises`} >
-           <img src={regiment.image} alt= "yoga" className="regimentImage"/>
+            <Link to={`/regiments/${regiment.id}/exercises`} >
+              <div className="regimentImageDiv">
+                <img src={regiment.image} alt={regiment.title} className="regimentImage" />
+                Enter Regiment
+              </div>
             </Link>
             {regiment.info}
           <div>

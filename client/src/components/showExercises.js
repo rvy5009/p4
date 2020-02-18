@@ -43,19 +43,22 @@ class Exercise extends Component {
     // console.log(this.props.match.params.id)
     // console.log(this.state.exercises)
     return (
-      <div className="exercises">
-        
+      <div className="outerExercise">
         <Link to={`/regiments/`} >
           Regmients
         </Link>  
         <Link to={`/regiments/${this.props.match.params.id}`} >
           <button>Add Exercise</button>
         </Link>
+     
+      <div className="exercises">
+        
+
 
         {this.state.exercises.map((exercise, key) => (
           <div key={key} className="exerciseMap"> {exercise.name}
             {/* {exercise.done} */}
-            <ReactPlayer url={exercise.image} className="exerciseVideo" alt="video" height={150} width={150}/>
+            <ReactPlayer url={exercise.image} className="exerciseVideo" alt="video" height={250} width={250}/>
             {exercise.instructions}
           <div>
           <button onClick={e => {this.delete(e, exercise.id)}}>
@@ -67,7 +70,8 @@ class Exercise extends Component {
           </div>
           </div>))}
         
-      </div>
+        </div>
+        </div>
     )
   }
 }
