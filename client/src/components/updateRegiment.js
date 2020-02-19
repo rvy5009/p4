@@ -4,7 +4,7 @@ import { withRouter, Link } from "react-router-dom"
 
 class UpdateRegiment extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       title: "",
       image: "",
@@ -21,7 +21,7 @@ class UpdateRegiment extends Component {
         title: resp.title,
         image: resp.image,
         info: resp.info
-      });
+      })
     } catch (e) {
       console.log(e)
     }
@@ -43,9 +43,8 @@ class UpdateRegiment extends Component {
         <div>
           <form
             onSubmit={e => {
-              e.preventDefault();
+              e.preventDefault()
               this.props.handleUpdateRegiment(e, this.props.regimentId, this.state)
-              
             }}>
             <input
               placeholder="name"

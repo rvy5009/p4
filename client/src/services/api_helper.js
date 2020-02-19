@@ -6,7 +6,6 @@ const api = axios.create({
 
 export const loginUser = async (loginData) => {
   const resp = await api.post('/auth/login', loginData)
-  console.log(resp)
   api.defaults.headers.common.authorization = `Bearer ${resp.data.auth_token}`
   localStorage.setItem('authToken', resp.data.auth_token)
   localStorage.setItem('name', resp.data.name)
@@ -37,27 +36,24 @@ export const allRegiments = async () => {
 }
 
 export const addRegiment = async (postData) => {
-  const resp = await api.post('/regiments', postData)
-  return resp.data
+  await api.post('/regiments', postData)
+
 }
 export const deleteRegiment = async id => {
   await api.delete(`/regiments/${id}`)
 }
 
 export const updateRegiment = async (id, updateData) => {
-  await api.put(`/regiments/${id}`, updateData);
-
+  await api.put(`/regiments/${id}`, updateData)
 }
+
 export const oneRegiment = async (regId) => {
   const resp = await api.get(`/regiments/${regId}`)
-  console.log(resp)
   return resp.data;
 }
 
-
 export const addExercise = async (id, postData) => {
   await api.post(`/regiments/${id}/exercises`, postData)
-
 }
 
 export const allExercises = async (id) => {
@@ -66,7 +62,7 @@ export const allExercises = async (id) => {
 }
 
 export const updateExerciseApi = async (regId, updateData, exId) => {
-  await api.put(`/regiments/${regId}/exercises/${exId}`, updateData);
+  await api.put(`/regiments/${regId}/exercises/${exId}`, updateData)
 }
 
 export const oneExercise = async (regId, exId) => {
@@ -75,6 +71,5 @@ export const oneExercise = async (regId, exId) => {
 }
 
 export const deleteExercise = async (regId, exId) => {
-  const resp = await api.delete(`/regiments/${regId}/exercises/${exId}`)
-  return resp.data;
-};
+  await api.delete(`/regiments/${regId}/exercises/${exId}`)
+}
