@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Route, withRouter } from 'react-router-dom'
-import { registerUser, loginUser, verifyUser, updateExerciseApi,updateRegiment } from './services/api_helper'
+import { newRegiment,registerUser, loginUser, verifyUser, updateExerciseApi,updateRegiment } from './services/api_helper'
 import './App.css'
 
 import AddRegiment from './components/addRegiment'
@@ -74,6 +74,15 @@ class App extends Component {
     this.props.history.push("/regiments")
   }
 
+  handleNewRegiment = async (e,data) => {
+    e.preventDefault()
+    try {
+      await newRegiment(data)
+    } catch (e) {
+      console.log(e)
+    }
+    this.props.history.push('/regiments')
+  }
   
   render() {
     return (
@@ -96,8 +105,9 @@ class App extends Component {
           <Regiment />
         )} />
         <Route exact path="/addRegiment"
-          render={() =>
+          render={(props) =>
             <AddRegiment
+              handleNewRegiment= {this.handleNewRegiment}
             />}
         />
         <Route exact path="/updateRegiment/:id"

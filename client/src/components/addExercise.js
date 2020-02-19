@@ -37,6 +37,7 @@ class AddExercise extends Component {
     }
     this.props.history.push(`/regiments/${this.props.match.params.id}/exercises`)
   }
+  
 
   render() {
     return (

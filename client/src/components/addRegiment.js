@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { newRegiment, verifyUser } from "../services/api_helper"
+// import { verifyUser } from "../services/api_helper"
 import { withRouter, Link } from 'react-router-dom'
 
 class AddRegiment extends Component {
@@ -24,16 +24,16 @@ class AddRegiment extends Component {
     })
   }
 
-  handleSubmit = async e => {
-    e.preventDefault()
-    verifyUser()
-    try {
-      await newRegiment(this.state.regiments)
-    } catch (e) {
-      console.log(e)
-    }
-    this.props.history.push('/regiments')
-  }
+  // handleSubmit = async e => {
+  //   e.preventDefault()
+  //   verifyUser()
+  //   try {
+  //     await newRegiment(this.state.regiments)
+  //   } catch (e) {
+  //     console.log(e)
+  //   }
+  //   this.props.history.push('/regiments')
+  // }
 
   render() {
     return (
@@ -42,7 +42,10 @@ class AddRegiment extends Component {
           Regmients
         </Link> 
         <div>
-          <form onSubmit={e => this.handleSubmit(e)}>
+          <form onSubmit={e => {
+            e.preventDefault()
+            this.props.handleNewRegiment(e, this.state.regiments)
+          }}>
             <input
               type="text"
               name="title"
