@@ -10,7 +10,7 @@
 
 ## MVP
 
-> Having a users linked to fitness posts and then being able to comment on what each user has done for each.
+> Have regiments linked to exercises and full CRUD in both.
 
 
 #### Wireframes

@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2020_02_11_191019) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "exercises", force: :cascade do |t|
     t.string "name"
     t.boolean "done"
@@ -19,7 +22,7 @@ ActiveRecord::Schema.define(version: 2020_02_11_191019) do
     t.string "instructions"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "regiment_id"
+    t.bigint "regiment_id"
     t.index ["regiment_id"], name: "index_exercises_on_regiment_id"
   end
 
