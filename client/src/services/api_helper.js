@@ -36,7 +36,7 @@ export const allRegiments = async () => {
   return resp.data
 }
 
-export const newRegiment = async (postData) => {
+export const addRegiment = async (postData) => {
   const resp = await api.post('/regiments', postData)
   return resp.data
 }

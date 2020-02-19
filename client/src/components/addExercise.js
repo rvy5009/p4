@@ -33,7 +33,7 @@ class AddExercise extends Component {
         <div >
           <form onSubmit={e => {
             e.preventDefault()
-            this.props.handleNewExercise(e,this.props.regimentId, this.state.exercises)
+            this.props.handleAddExercise(e,this.props.regimentId, this.state.exercises)
           }} >
             <input
               type="text"
