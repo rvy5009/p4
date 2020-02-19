@@ -1,7 +1,5 @@
 import React, { Component } from "react"
-import { verifyUser, addExercise } from "../services/api_helper"
 import { withRouter,Link } from 'react-router-dom'
-
 
 class AddExercise extends Component {
   constructor(props) {
@@ -26,19 +24,6 @@ class AddExercise extends Component {
     })
   }
 
-  handleSubmit = async e => {
-    verifyUser()
-    const id = this.props.match.params.id
-    e.preventDefault()
-    try {
-      addExercise(id, this.state.exercises)
-    } catch (e) {
-      console.log(e)
-    }
-    this.props.history.push(`/regiments/${this.props.match.params.id}/exercises`)
-  }
-  
-
   render() {
     return (
       <div className="addExercise">
@@ -46,7 +31,10 @@ class AddExercise extends Component {
           Exercises
         </Link>
         <div >
-          <form onSubmit={e => this.handleSubmit(e)} >
+          <form onSubmit={e => {
+            e.preventDefault()
+            this.props.handleNewExercise(e,this.props.regimentId, this.state.exercises)
+          }} >
             <input
               type="text"
               name="name"

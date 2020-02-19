@@ -56,8 +56,8 @@ export const oneRegiment = async (regId) => {
 
 
 export const addExercise = async (id, postData) => {
-  const resp = await api.post(`/regiments/${id}/exercises`, postData)
-  return resp.data
+  await api.post(`/regiments/${id}/exercises`, postData)
+
 }
 
 export const allExercises = async (id) => {

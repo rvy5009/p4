@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Route, withRouter } from 'react-router-dom'
-import { newRegiment,registerUser, loginUser, verifyUser, updateExerciseApi,updateRegiment } from './services/api_helper'
+import { addExercise, newRegiment,registerUser, loginUser, verifyUser, updateExerciseApi,updateRegiment } from './services/api_helper'
 import './App.css'
 
 import AddRegiment from './components/addRegiment'
@@ -84,6 +84,17 @@ class App extends Component {
     this.props.history.push('/regiments')
   }
   
+  handleNewExercise = async (e, regId, data) => {
+    verifyUser()
+    e.preventDefault()
+    try {
+      addExercise(regId, data)
+    } catch (e) {
+      console.log(e)
+    }
+    this.props.history.push(`/regiments/${regId}/exercises`)
+  }
+
   render() {
     return (
       <div className="App">
@@ -117,7 +128,13 @@ class App extends Component {
               handleUpdateRegiment ={this.handleUpdateRegiment}
             />}
         />
-        <Route exact path="/regiments/:id" render={() => <AddExercise />} />
+        <Route exact path="/regiments/:id"
+          render={(props) =>
+            <AddExercise
+              regimentId={props.match.params.id}
+              handleNewExercise={this.handleNewExercise}
+            />}
+        />
         <Route exact path={`/regiments/:id/exercises`}
           render={() => <Exercise />}
         />
