@@ -65,7 +65,7 @@ class App extends Component {
   }
 
   handleSubmit = async (e, data, regimentId, exerciseId) => {
-    e.preventDefault();
+    e.preventDefault()
     await updateExerciseApi(regimentId, data, exerciseId)
     this.props.history.push(`/regiments/${regimentId}/exercises`)
   }

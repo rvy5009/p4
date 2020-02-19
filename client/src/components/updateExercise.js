@@ -79,7 +79,7 @@ class UpdateExercise extends Component {
           <button type="submit">Update Exercise </button>
         </form>
       </div>
-    );
+    )
   }
 }
 

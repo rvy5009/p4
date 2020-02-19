@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { newRegiment, verifyUser } from "../services/api_helper";
+import React, { Component } from "react"
+import { newRegiment, verifyUser } from "../services/api_helper"
 import {withRouter, Link} from 'react-router-dom'
 class CreateRegiment extends Component {
   constructor(props) {
@@ -10,7 +10,7 @@ class CreateRegiment extends Component {
         image: "",
         info: ""
       }
-    };
+    }
   }
 
   onChange = e => {
@@ -24,11 +24,10 @@ class CreateRegiment extends Component {
   }
 
   handleSubmit = async e => {
-    e.preventDefault();
+    e.preventDefault()
     verifyUser()
     try {
-      newRegiment(this.state.regiments)
-
+      await newRegiment(this.state.regiments)
     } catch (e) {
       console.log(e)
     }

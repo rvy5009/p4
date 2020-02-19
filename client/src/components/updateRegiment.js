@@ -47,8 +47,7 @@ class UpdateRegiment extends Component {
               e.preventDefault();
               updateRegiment(this.props.match.params.id, this.state);
               this.props.history.push("/regiments")
-            }}
-          >
+            }}>
             <input
               placeholder="name"
               type="text"
@@ -72,7 +71,6 @@ class UpdateRegiment extends Component {
               value={this.state.info}
               onChange={this.handleChange}
             />
-
             <br />
             <button type="submit">Update</button>
           </form>

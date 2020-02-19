@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { verifyUser, addExercise } from "../services/api_helper";
+import React, { Component } from "react"
+import { verifyUser, addExercise } from "../services/api_helper"
 import { withRouter,Link } from 'react-router-dom'
 
 
@@ -13,7 +13,7 @@ class AddExercise extends Component {
         image: "",
         instructions: ""
       }
-    };
+    }
   }
 
   onChange = e => {
@@ -30,7 +30,6 @@ class AddExercise extends Component {
     verifyUser()
     const id = this.props.match.params.id
     e.preventDefault()
-    verifyUser()
     try {
       addExercise(id, this.state.exercises)
     } catch (e) {
