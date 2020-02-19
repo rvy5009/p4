@@ -13,8 +13,6 @@ import Exercise from './components/showExercises'
 import Header from './components/header'
 import UpdateExercise from './components/updateExercise'
 
-
-
 class App extends Component {
   constructor(props) {
     super(props)
@@ -76,8 +74,7 @@ class App extends Component {
     this.props.history.push("/regiments")
   }
 
-
-
+  
   render() {
     return (
       <div className="App">
@@ -98,7 +95,11 @@ class App extends Component {
         <Route exact path="/regiments" render={() => (
           <Regiment />
         )} />
-        <Route exact path="/addRegiment" render={() => <AddRegiment />} />
+        <Route exact path="/addRegiment"
+          render={() =>
+            <AddRegiment
+            />}
+        />
         <Route exact path="/updateRegiment/:id"
           render={(props) =>
             <UpdateRegiment

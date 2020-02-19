@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { updateRegiment, oneRegiment, verifyUser } from "../services/api_helper"
+import { oneRegiment, verifyUser } from "../services/api_helper"
 import { withRouter, Link } from "react-router-dom"
 
 class UpdateRegiment extends Component {

@@ -166,7 +166,7 @@ button{
 
 
 
-@media (max-width: 600px){
+@media (max-width: 769px){
 
   .regiments, .exerciseMap{
     width: 80vw;
