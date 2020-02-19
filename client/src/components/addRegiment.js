@@ -1,7 +1,8 @@
 import React, { Component } from "react"
 import { newRegiment, verifyUser } from "../services/api_helper"
-import {withRouter, Link} from 'react-router-dom'
-class CreateRegiment extends Component {
+import { withRouter, Link } from 'react-router-dom'
+
+class AddRegiment extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -74,7 +75,7 @@ class CreateRegiment extends Component {
   }
 }
 
-export default withRouter(CreateRegiment)
+export default withRouter(AddRegiment)
 
 
 

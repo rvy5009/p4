@@ -17,7 +17,6 @@ class UpdateRegiment extends Component {
     const id = this.props.match.params.id
     try {
       const resp = await oneRegiment(id)
-      // console.log(resp)
       this.setState({
         title: resp.title,
         image: resp.image,
@@ -45,8 +44,8 @@ class UpdateRegiment extends Component {
           <form
             onSubmit={e => {
               e.preventDefault();
-              updateRegiment(this.props.match.params.id, this.state);
-              this.props.history.push("/regiments")
+              this.props.handleUpdateRegiment(e, this.props.regimentId, this.state)
+              
             }}>
             <input
               placeholder="name"

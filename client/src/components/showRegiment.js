@@ -22,14 +22,6 @@ class Regiment extends Component {
     }
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (prevState.regiments !== this.state.regiments) {
-      const regiments = this.state.regiments
-      this.setState({
-        regiments
-      })
-    }
-  }
 
   deleteReg = async (e, regimentId) => {
     e.preventDefault()
@@ -47,7 +39,7 @@ class Regiment extends Component {
   render() {
     return (
       <div className="outerRegiment1">
-        <Link to="/createRegiment">
+        <Link to="/addRegiment">
           Create Workout Regiment
         </Link>
         <div className="outerRegiments">

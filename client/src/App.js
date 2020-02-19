@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { Route, withRouter } from 'react-router-dom'
-import { registerUser, loginUser, verifyUser, updateExerciseApi } from './services/api_helper'
+import { registerUser, loginUser, verifyUser, updateExerciseApi,updateRegiment } from './services/api_helper'
 import './App.css'
 
-import CreateRegiment from './components/addRegiment'
+import AddRegiment from './components/addRegiment'
 import RegisterForm from './components/registerForm'
 import LoginForm from './components/loginForm'
 import Regiment from './components/showRegiment'
@@ -70,6 +70,14 @@ class App extends Component {
     this.props.history.push(`/regiments/${regimentId}/exercises`)
   }
 
+  handleUpdateRegiment = async (e, regimentId, data) => {
+    e.preventDefault()
+    await updateRegiment(regimentId, data)
+    this.props.history.push("/regiments")
+  }
+
+
+
   render() {
     return (
       <div className="App">
@@ -90,8 +98,14 @@ class App extends Component {
         <Route exact path="/regiments" render={() => (
           <Regiment />
         )} />
-        <Route exact path="/createRegiment" render={() => <CreateRegiment />} />
-        <Route exact path="/updateRegiment/:id" component={UpdateRegiment} />
+        <Route exact path="/addRegiment" render={() => <AddRegiment />} />
+        <Route exact path="/updateRegiment/:id"
+          render={(props) =>
+            <UpdateRegiment
+              regimentId={props.match.params.id}
+              handleUpdateRegiment ={this.handleUpdateRegiment}
+            />}
+        />
         <Route exact path="/regiments/:id" render={() => <AddExercise />} />
         <Route exact path={`/regiments/:id/exercises`}
           render={() => <Exercise />}
